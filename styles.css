@@ -18,6 +18,7 @@ body {
    background: #0f0f0f;
    color: white;
    font-size: 42px;
+   position: relative;
 }
 
 
@@ -27,10 +28,10 @@ body {
       url('node_modules/typeface-germania-one/files/germania-one-latin-400.woff2') format('woff2');
 }
 @font-face {
-    font-family: Roboto Mono;
-    src: url('node_modules/typeface-roboto-mono/files/roboto-mono-latin-400.woff') format('woff'),
-       url('node_modules/typeface-roboto-mono/files/roboto-mono-latin-400.woff2') format('woff2');
- }
+   font-family: Roboto Mono;
+   src: url('node_modules/typeface-roboto-mono/files/roboto-mono-latin-400.woff') format('woff'),
+      url('node_modules/typeface-roboto-mono/files/roboto-mono-latin-400.woff2') format('woff2');
+}
 
 .bigText {
    font-family: Germania One, cursive;

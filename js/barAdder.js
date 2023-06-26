@@ -15,7 +15,7 @@ export const barAdder = (wrapper) => {
    botBar.src = barAddress;
    botBar.style.transform = 'rotate(180deg)';
    botBar.style.position = 'absolute';
-   botBar.style.bottom = '0px';
+   botBar.style.bottom = '0';
 
    wrapper.appendChild(topBar);
    wrapper.appendChild(botBar);
