@@ -12,6 +12,8 @@
     ]
   },
   "dependencies": {
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "typeface-germania-one": "^1.1.13",
+    "typeface-roboto-mono": "^1.1.13"
   }
 }
