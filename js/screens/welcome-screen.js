@@ -1,12 +1,15 @@
+import { barAdder } from '../barAdder';
+
 export const welcomeScreen = () => {
    const welcomeStepWrapper = document.createElement('div');
-   welcomeStepWrapper.innerText = 'Welcome screen';
+   welcomeStepWrapper.innerText = 'ACCCCCBbA screen';
 
    let topBar = document.createElement('img');
 
-   topBar.src = './../assets/bottomBar.svg';
+   //barAdder(welcomeStepWrapper);
+
+   topBar.src = './../assets/bar.svg';
 
    welcomeStepWrapper.appendChild(topBar);
-
    return welcomeStepWrapper;
 };
