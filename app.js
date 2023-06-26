@@ -7,7 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
    const displayWizardScreen = wizardScreen();
 
    // Display welcome screen
+   // app.append(displayWelcomeScreen);
+
    app.append(displayWelcomeScreen);
+
+   console.log('ahahaha');
 
    // Display wizard screen
    // app.append(displayWizardScreen);
