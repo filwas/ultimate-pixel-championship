@@ -1,3 +1,4 @@
+import { doc } from 'prettier';
 import { characterToggler } from './characterToggler.js';
 
 export const chooseFighterStep = () => {
@@ -6,7 +7,7 @@ export const chooseFighterStep = () => {
 
    let char = characterToggler(1);
 
-   console.log(char);
+   console.log(char.name);
 
    return chooseFighterStepWrapper;
 };
