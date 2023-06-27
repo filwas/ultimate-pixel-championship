@@ -13,6 +13,7 @@ export const welcomeScreen = () => {
    let nameSecondPart = document.createElement('span');
    let swordsImg = document.createElement('img');
    let infoText = document.createElement('span');
+   let buttonImage = document.createElement('img');
    let button = document.createElement('button');
 
    // 3. Add text and image sources.
@@ -20,7 +21,7 @@ export const welcomeScreen = () => {
    nameSecondPart.textContent = 'Championships';
    infoText.textContent = 'Fill out the form to sign up\nfor upcoming tournee.';
    swordsImg.src = 'assets/swords.svg';
-   button.src = 'assets/buttonChoose.svg';
+   buttonImage.src = 'assets/buttonChoose.svg';
 
    // 4. Apply CSS classes, as well as tweaks for specific elements.
    nameFirstPart.classList.add('bigText');
@@ -32,11 +33,13 @@ export const welcomeScreen = () => {
    swordsImg.style.marginTop = '31px';
    swordsImg.style.marginBottom = '19px';
    infoText.style.color = '#EFB55E';
+   button.style.background = 'transparent';
    button.style.marginTop = '56px';
 
    // 5. Append all children, thus creating the page.
    gameNameText.appendChild(nameFirstPart);
    gameNameText.appendChild(nameSecondPart);
+   button.appendChild(buttonImage);
    welcomeStepWrapper.appendChild(gameNameText);
    welcomeStepWrapper.appendChild(swordsImg);
    welcomeStepWrapper.appendChild(infoText);
