@@ -1,7 +1,7 @@
 {
   "devDependencies": {
-    "prettier": "^2.8.7",
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "prettier": "^2.8.7"
   },
   "scripts": {
     "prepare": "husky install"
@@ -10,5 +10,10 @@
     "**/*.{js,jsx,ts,tsx}": [
       "npx prettier --write"
     ]
+  },
+  "dependencies": {
+    "http-server": "^14.1.1",
+    "typeface-germania-one": "^1.1.13",
+    "typeface-roboto-mono": "^1.1.13"
   }
 }
