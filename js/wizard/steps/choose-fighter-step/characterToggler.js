@@ -8,7 +8,6 @@ export const characterToggler = (i) => {
    i = i % 6;
    let names = ['Annoyed Karen', 'Mad Suzie', 'Jenny Wick', 'Purple Pie', 'Pale Lara', 'Ivy Irene'];
 
-   let src = ['assets/characters/annoyedKaren.svg'];
    let hp = [67, 78, 55, 80, 60, 70];
    let minAtk = [14, 12, 22, 9, 15, 10];
    let maxAtk = [18, 18, 24, 12, 16, 14];

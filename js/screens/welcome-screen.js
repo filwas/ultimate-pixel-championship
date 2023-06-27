@@ -1,7 +1,6 @@
 import { wizardScreen } from './wizard-screen.js';
 /**
- * This function creates the welcome screen..
- *
+ * This function creates the welcome screen.
  */
 export const welcomeScreen = () => {
    // 1. Establish main wrapper.
@@ -14,7 +13,7 @@ export const welcomeScreen = () => {
    let nameSecondPart = document.createElement('span');
    let swordsImg = document.createElement('img');
    let infoText = document.createElement('span');
-   let button = document.createElement('img');
+   let button = document.createElement('button');
 
    // 3. Add text and image sources.
    nameFirstPart.textContent = 'Ultimate Pix\n';
