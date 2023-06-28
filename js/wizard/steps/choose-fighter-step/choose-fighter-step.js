@@ -1,3 +1,4 @@
+import { buttonMaker } from '../../../components/buttonMaker.js';
 import { characterProfileMaker } from './characterProfileMaker.js';
 import { characterToggler } from './characterToggler.js';
 
@@ -19,15 +20,13 @@ export const chooseFighterStep = () => {
    // let leftArrow
    // let rightArrow i'll be adding these arrows later when I'll add slideshow
 
-   let button = document.createElement('button');
-   let buttonImage = document.createElement('img');
+   let button = buttonMaker('choose');
 
    topText.textContent = 'Choose your fighter';
    progressBar.src = 'assets/progress/stepOne.svg';
    characterImage.src = characterDetails.src;
    characterShadow.src = 'assets/characterShadow.svg';
    characterName.textContent = characterDetails.name;
-   buttonImage.src = 'assets/buttonChoose.svg';
 
    topText.classList.add('bigText');
    topText.style.fontSize = '30px';
@@ -38,11 +37,8 @@ export const chooseFighterStep = () => {
    characterShadow.style.marginTop = '-10px';
    characterName.classList.add('bigText');
    characterName.style.fontSize = '30px';
-   button.style.background = 'transparent';
 
    console.log(characterDetails.name);
-
-   button.appendChild(buttonImage);
 
    chooseFighterStepWrapper.appendChild(topText);
    chooseFighterStepWrapper.appendChild(progressBar);
