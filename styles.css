@@ -21,7 +21,6 @@ body {
    position: relative;
 }
 
-
 @font-face {
    font-family: Germania One;
    src: url('node_modules/typeface-germania-one/files/germania-one-latin-400.woff') format('woff'),
@@ -60,3 +59,29 @@ body {
    align-content: center;
    text-align: center;
 }
+
+.characterProfile {
+   height: 200px;
+   width: 200px;
+   margin: 31px;
+   display: grid;
+   align-content: center;
+   grid-template-columns: 1fr;
+   grid-template-rows: repeat(3, 1fr);
+}
+
+.hpAndAtk {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   grid-template-rows: 1fr;
+}
+
+.allCharacterData {
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: repeat(2, 1fr);
+   line-height: normal;
+   align-items: end;
+}
+
+
