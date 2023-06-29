@@ -1,14 +1,14 @@
 import { characterProfileMaker } from './characterProfileMaker.js';
-import { characterToggler } from './characterToggler.js';
+import { characterData } from './characterData.js';
+import { buttonMaker } from '../../../components/buttonMaker.js';
 
-export const chooseFighterStep = () => {
+export const chooseFighterStep = (index = 0) => {
    const chooseFighterStepWrapper = document.createElement('div');
-   chooseFighterStepWrapper.classList.add('welcomeScreen');
+   chooseFighterStepWrapper.id = 'chooseFighterStepWrapper';
+   chooseFighterStepWrapper.classList.add('genericScreenStyle');
 
-   let characterIndex = 1;
-
-   let characterDetails = characterToggler(characterIndex);
-   let characterProfile = characterProfileMaker(characterIndex);
+   let characterDetails = characterData[index];
+   let characterProfile = characterProfileMaker(characterDetails);
 
    let topText = document.createElement('span');
    let progressBar = document.createElement('img');
@@ -16,8 +16,13 @@ export const chooseFighterStep = () => {
    let characterShadow = document.createElement('img');
    let characterName = document.createElement('span');
 
-   // let leftArrow
-   // let rightArrow i'll be adding these arrows later when I'll add slideshow
+   let rightArrow = buttonMaker({ type: 'rightArrow', onClick: nextCharacter });
+   let leftArrow = buttonMaker({ type: 'leftArrow', onClick: prevCharacter });
+   if (index == 0) {
+      leftArrow.style.display = 'none';
+   } else if (index == 5) {
+      rightArrow.style.display = 'none';
+   }
 
    topText.textContent = 'Choose your fighter';
    progressBar.src = 'assets/progress/stepOne.svg';
@@ -41,6 +46,19 @@ export const chooseFighterStep = () => {
    chooseFighterStepWrapper.appendChild(characterShadow);
    chooseFighterStepWrapper.appendChild(characterName);
    chooseFighterStepWrapper.appendChild(characterProfile);
+   chooseFighterStepWrapper.appendChild(rightArrow);
+   chooseFighterStepWrapper.appendChild(leftArrow);
+
+   function nextCharacter() {
+      const wizardWrapper = chooseFighterStepWrapper.parentElement;
+      chooseFighterStepWrapper.remove();
+      wizardWrapper.prepend(chooseFighterStep(index + 1));
+   }
+   function prevCharacter() {
+      const wizardWrapper = chooseFighterStepWrapper.parentElement;
+      chooseFighterStepWrapper.remove();
+      wizardWrapper.prepend(chooseFighterStep(index - 1));
+   }
 
    return chooseFighterStepWrapper;
 };
