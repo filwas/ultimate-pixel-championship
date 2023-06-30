@@ -31,8 +31,12 @@ export function arrowButtonMaker(props) {
 
    button.addEventListener('click', () => {
       const wizardWrapper = button.parentElement.parentElement;
+      const secondChild = wizardWrapper.childNodes[1];
+      secondChild.insertAdjacentElement(
+         'afterend',
+         chooseFighterStep(type == 'right' ? index + 1 : index - 1),
+      );
       button.parentElement.remove();
-      wizardWrapper.prepend(chooseFighterStep(type == 'right' ? index + 1 : index - 1));
    });
 
    return button;
