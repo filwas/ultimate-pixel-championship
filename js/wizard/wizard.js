@@ -8,9 +8,23 @@ import { characterData } from './steps/choose-fighter-step/characterData.js';
 export const initWizard = (index = 0) => {
    let proceedButtonProps = {
       type: 'proceed',
-      text: index == 0 ? 'Choose fighter!' : 'Continue',
+      text: '',
       onClick: nextWizardStep,
    };
+
+   switch (index) {
+      case 0:
+         proceedButtonProps.text = 'Choose fighter!';
+         break;
+      case 1:
+         proceedButtonProps.text = 'Submit';
+         break;
+      case 2:
+         break;
+         proceedButtonProps.text = 'Submit another fighter';
+      default:
+         break;
+   }
    let button = bigButtonMaker(proceedButtonProps);
    // I keep steps in the array, so Im able to navigate through
    const steps = [chooseFighterStep(), bookingDetailsStep(), bookingConfirmationStep()];
