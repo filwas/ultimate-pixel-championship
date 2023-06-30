@@ -44,16 +44,5 @@ export const chooseFighterStep = (index = 0) => {
    index != 5 && chooseFighterStepWrapper.appendChild(rightArrow);
    index != 0 && chooseFighterStepWrapper.appendChild(leftArrow);
 
-   function nextCharacter() {
-      const wizardWrapper = chooseFighterStepWrapper.parentElement;
-      chooseFighterStepWrapper.remove();
-      wizardWrapper.prepend(chooseFighterStep(index + 1));
-   }
-   function prevCharacter() {
-      const wizardWrapper = chooseFighterStepWrapper.parentElement;
-      chooseFighterStepWrapper.remove();
-      wizardWrapper.prepend(chooseFighterStep(index - 1));
-   }
-
    return chooseFighterStepWrapper;
 };
