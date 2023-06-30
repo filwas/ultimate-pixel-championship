@@ -1,7 +1,7 @@
 import { chooseFighterStep } from './steps/choose-fighter-step/choose-fighter-step.js';
 import { bookingDetailsStep } from './steps/booking-details-step/booking-details-step.js';
 import { bookingConfirmationStep } from './steps/booking-confirmation-step/booking-confirmation-step.js';
-import { buttonMaker } from '../components/buttonMaker.js';
+import { bigButtonMaker } from '../components/bigButtonMaker.js';
 
 export const initWizard = (index = 0) => {
    let proceedButtonProps = {
@@ -9,7 +9,7 @@ export const initWizard = (index = 0) => {
       text: index == 0 ? 'Choose fighter!' : 'Continue',
       onClick: nextWizardStep,
    };
-   let button = buttonMaker(proceedButtonProps);
+   let button = bigButtonMaker(proceedButtonProps);
    // I keep steps in the array, so Im able to navigate through
    const steps = [chooseFighterStep(), bookingDetailsStep(), bookingConfirmationStep()];
 
