@@ -3,6 +3,7 @@ import { bookingDetailsStep } from './steps/booking-details-step/booking-details
 import { bookingConfirmationStep } from './steps/booking-confirmation-step/booking-confirmation-step.js';
 import { bigButtonMaker } from '../components/bigButtonMaker.js';
 import { progressMaker } from '../components/progressMaker.js';
+import { characterData } from './steps/choose-fighter-step/characterData.js';
 
 export const initWizard = (index = 0) => {
    let proceedButtonProps = {
@@ -31,7 +32,8 @@ export const initWizard = (index = 0) => {
    wizardWrapper.append(button);
 
    function nextWizardStep() {
-      let characterName = wizardWrapper.childNodes[1].getAttribute('characterName');
+      let characterName =
+         characterData[wizardWrapper.childNodes[1].getAttribute('characterIndex')].name;
       console.log(characterName);
       let wizardScreen = wizardWrapper.parentElement;
       wizardWrapper.remove();

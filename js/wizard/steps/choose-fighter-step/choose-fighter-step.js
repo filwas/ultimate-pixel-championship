@@ -6,6 +6,7 @@ export const chooseFighterStep = (index = 0) => {
    const chooseFighterStepWrapper = document.createElement('div');
    chooseFighterStepWrapper.id = 'chooseFighterStepWrapper';
    chooseFighterStepWrapper.classList.add('genericScreenStyle');
+   chooseFighterStepWrapper.setAttribute('characterIndex', index);
 
    let characterDetails = characterData[index];
    let characterProfile = characterProfileMaker(characterDetails);
@@ -27,7 +28,6 @@ export const chooseFighterStep = (index = 0) => {
    characterName.classList.add('bigText');
    characterName.style.fontSize = '30px';
 
-   chooseFighterStepWrapper.setAttribute('characterName', characterDetails.name);
    chooseFighterStepWrapper.appendChild(characterImage);
    chooseFighterStepWrapper.appendChild(characterShadow);
    chooseFighterStepWrapper.appendChild(characterName);
