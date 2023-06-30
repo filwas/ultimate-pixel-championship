@@ -1,11 +1,11 @@
 import { chooseFighterStep } from './steps/choose-fighter-step/choose-fighter-step.js';
 import { bookingDetailsStep } from './steps/booking-details-step/booking-details-step.js';
 import { bookingConfirmationStep } from './steps/booking-confirmation-step/booking-confirmation-step.js';
-import { bigButtonMaker } from '../components/bigButtonMaker.js';
+import { bigButtonMaker } from '../components/buttonMaker.js';
 
 export const initWizard = (index = 0) => {
    let proceedButtonProps = {
-      type: 'proceed',
+      background: '#DA8B14',
       text: index == 0 ? 'Choose fighter!' : 'Continue',
       onClick: nextWizardStep,
    };

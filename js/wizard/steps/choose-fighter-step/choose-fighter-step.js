@@ -16,8 +16,18 @@ export const chooseFighterStep = (index = 0) => {
    let characterShadow = document.createElement('img');
    let characterName = document.createElement('span');
 
-   let rightArrow = arrowButtonMaker({ type: 'right', index: index });
-   let leftArrow = arrowButtonMaker({ type: 'left', index: index });
+   //let rightArrow = arrowButtonMaker({ image: 'right', index: index });
+   //let leftArrow = arrowButtonMaker({ type: 'left', index: index, });
+   let leftArrow = arrowButtonMaker({
+      image: 'url(assets/buttonPrev.svg)',
+      onClick: changeHero,
+   });
+   leftArrow.style.left = '0%';
+   let rightArrow = arrowButtonMaker({
+      image: 'url(assets/buttonNext.svg)',
+      onClick: changeHero,
+   });
+   rightArrow.style.right = '0%';
 
    topText.textContent = 'Choose your fighter';
    progressBar.src = 'assets/progress/stepOne.svg';
@@ -43,6 +53,8 @@ export const chooseFighterStep = (index = 0) => {
    chooseFighterStepWrapper.appendChild(characterProfile);
    index != 5 && chooseFighterStepWrapper.appendChild(rightArrow);
    index != 0 && chooseFighterStepWrapper.appendChild(leftArrow);
+
+   function changeHero() {}
 
    return chooseFighterStepWrapper;
 };
