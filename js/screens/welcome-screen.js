@@ -1,4 +1,4 @@
-import { buttonMaker } from '../components/buttonMaker.js';
+import { bigButtonMaker, buttonMaker } from '../components/buttonMaker.js';
 import { wizardScreen } from './wizard-screen.js';
 /**
  * This function creates the welcome screen.
@@ -6,7 +6,8 @@ import { wizardScreen } from './wizard-screen.js';
 export const welcomeScreen = () => {
    // 1. Establish main wrapper.
    const welcomeStepWrapper = document.createElement('div');
-   welcomeStepWrapper.classList.add('welcomeScreen');
+   welcomeStepWrapper.id = 'welcomeStepWrapper';
+   welcomeStepWrapper.classList.add('genericScreenStyle');
 
    // 2. Create all the required elements.
    let gameNameText = document.createElement('span');
@@ -14,8 +15,20 @@ export const welcomeScreen = () => {
    let nameSecondPart = document.createElement('span');
    let swordsImg = document.createElement('img');
    let infoText = document.createElement('span');
-   let buttonImage = document.createElement('img');
-   let button = buttonMaker('choose');
+
+   function welcomeClick() {
+      let app = welcomeStepWrapper.parentElement;
+      welcomeStepWrapper.remove();
+      app.appendChild(wizardScreen());
+   }
+   let button = bigButtonMaker({
+      text: 'Choose',
+      background: '#DA8B14',
+      fontColor: '#0F0F0F',
+      onClick: welcomeClick,
+   });
+
+   //bigButtonMaker({ background: '#DA8B14', text: 'Proceed.', onClick: welcomeClick });
 
    // 3. Add text and image sources.
    nameFirstPart.textContent = 'Ultimate Pix\n';
@@ -38,18 +51,10 @@ export const welcomeScreen = () => {
    // 5. Append all children, thus creating the page.
    gameNameText.appendChild(nameFirstPart);
    gameNameText.appendChild(nameSecondPart);
-   button.appendChild(buttonImage);
    welcomeStepWrapper.appendChild(gameNameText);
    welcomeStepWrapper.appendChild(swordsImg);
    welcomeStepWrapper.appendChild(infoText);
    welcomeStepWrapper.appendChild(button);
-
-   // 6. Make clicking the button change screens.
-   button.addEventListener('click', () => {
-      let app = welcomeStepWrapper.parentElement;
-      welcomeStepWrapper.remove();
-      app.appendChild(wizardScreen());
-   });
 
    return welcomeStepWrapper;
 };

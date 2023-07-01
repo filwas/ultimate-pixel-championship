@@ -50,7 +50,7 @@ body {
    text-align: center;
 }
 
-.welcomeScreen {
+.genericScreenStyle {
    display: inline-flex;
    flex-direction: column;
    flex-wrap: wrap;
@@ -84,4 +84,8 @@ body {
    align-items: end;
 }
 
+.arrowButton{
+   position: absolute;
+   top: 50%;
+}
 

@@ -1,8 +1,5 @@
-import { characterToggler } from './characterToggler.js';
-
-export function characterProfileMaker(index) {
+export function characterProfileMaker(characterDetails) {
    let characterProfile = document.createElement('div');
-   let characterDetails = characterToggler(index);
 
    let hpAndAtk = document.createElement('div');
 
