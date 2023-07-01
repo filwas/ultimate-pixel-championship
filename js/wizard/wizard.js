@@ -15,7 +15,7 @@ export const initWizard = (props) => {
    wizardWrapper.id = 'wizardWrapper';
    wizardWrapper.classList.add('genericScreenStyle');
 
-   let progressBar = progressMaker({ wizardStep: props.wizardStep });
+   let progressBar = progressMaker(props);
 
    const steps = [
       chooseFighterStep(props.characterIndex),
@@ -23,10 +23,7 @@ export const initWizard = (props) => {
       bookingConfirmationStep(),
    ];
 
-   let wizardButtons = wizardButtonWrapper({
-      wizardStep: props.wizardStep,
-      characterIndex: props.characterIndex,
-   });
+   let wizardButtons = wizardButtonWrapper(props);
 
    wizardWrapper.append(progressBar);
 

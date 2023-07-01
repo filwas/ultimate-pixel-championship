@@ -4,7 +4,6 @@ import { bigButtonMaker } from './buttonMaker.js';
  * Creates the buttons for the wizard.
  * @param {object} props - The properties of the button wrapper.
  * @param {number} props.wizardStep - Current step of the wizard.
- * @param {number} props.characterIndex - Current chosen character.
  * @returns {HTMLElement} - The generated wizard buttons element.
  */
 export function wizardButtonWrapper(props) {
