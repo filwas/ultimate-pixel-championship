@@ -12,6 +12,7 @@ export const bookingDetailsStep = (characterIndex) => {
    bookingDetailsStepWrapper.style.marginTop = '65px';
 
    let formWrapper = document.createElement('form');
+
    let charNameElement = formElementMaker({
       blockName: 'CHOSEN FIGHTER',
       blockType: 'charName',

@@ -35,7 +35,7 @@ export function formElementMaker(props) {
    let allowedTypes = ['userName', 'charName', 'email'];
 
    if (!allowedTypes.includes(props.blockType)) {
-      throw new Error('Invalid input type. Only "input", "email and "charName" are allowed.');
+      throw new Error(`Invalid input type. Allowed form types are: ${allowedTypes}.`);
    }
 
    let formElement = document.createElement('div');
