@@ -1,5 +1,6 @@
 export function characterProfileMaker(characterDetails) {
    let characterProfile = document.createElement('div');
+   characterProfile.id = 'characterProfile';
 
    let hpAndAtk = document.createElement('div');
 
@@ -36,10 +37,6 @@ export function characterProfileMaker(characterDetails) {
    atk.classList.add('allCharacterData');
    specialAtk.classList.add('allCharacterData');
    weakness.classList.add('allCharacterData');
-
-   //So I tried making the next couple lines with
-   //[hpNumber, atkNumber, ...].forEach(prop => {"addBigText, 18px and white"})
-   //but got an error saying html elements don't have these properties.
 
    hpNumber.classList.add('bigText');
    hpNumber.style.fontSize = '18px';

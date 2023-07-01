@@ -1,6 +1,6 @@
-import { characterProfileMaker } from './characterProfileMaker.js';
-import { characterData } from './characterData.js';
 import { arrowButtonMaker } from '../../../components/buttonMaker.js';
+import { characterData } from '../../../components/characterData.js';
+import { characterProfileMaker } from '../../../components/characterProfileMaker.js';
 
 export const chooseFighterStep = (index = 0) => {
    const chooseFighterStepWrapper = document.createElement('div');
@@ -43,8 +43,8 @@ export const chooseFighterStep = (index = 0) => {
 
    function changeHero(event) {
       let increment = event.target.id == 'right' ? 1 : -1;
-      let wizardWrapper = chooseFighterStepWrapper.parentElement;
-      wizardWrapper.prepend(chooseFighterStep(index + increment));
+      let progressWrapper = chooseFighterStepWrapper.parentElement.childNodes[0];
+      progressWrapper.insertAdjacentElement('afterend', chooseFighterStep(index + increment));
       chooseFighterStepWrapper.remove();
    }
 

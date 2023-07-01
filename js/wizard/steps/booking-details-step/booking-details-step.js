@@ -1,5 +1,5 @@
+import { characterData } from '../../../components/characterData.js';
 import { inputMaker } from '../../../components/inputMaker.js';
-import { characterData } from '../choose-fighter-step/characterData.js';
 
 export const bookingDetailsStep = (characterIndex = 0) => {
    const bookingDetailsStepWrapper = document.createElement('div');

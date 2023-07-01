@@ -28,8 +28,6 @@ export const welcomeScreen = () => {
       onClick: welcomeClick,
    });
 
-   //bigButtonMaker({ background: '#DA8B14', text: 'Proceed.', onClick: welcomeClick });
-
    // 3. Add text and image sources.
    nameFirstPart.textContent = 'Ultimate Pix\n';
    nameSecondPart.textContent = 'Championships';

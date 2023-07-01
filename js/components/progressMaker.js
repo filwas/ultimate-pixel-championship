@@ -1,19 +1,17 @@
 /**
  * Creates the progress bar.
  * @param {object} props - The properties of progress bar.
- * @param {int} props.index - Current step index.
- * @returns {HTMLElement} - The generated button element.
- * @throws {Error} - Throws an error if the type is not "left" or "right".
+ * @param {number} props.wizardStep - Current step of the wizard.
+ * @returns {HTMLElement} - The generated progress bar element.
  */
 export function progressMaker(props) {
    const progressWrapper = document.createElement('div');
    progressWrapper.id = 'progressWrapper';
    progressWrapper.classList.add('genericScreenStyle');
-   const index = props.index;
    let topText = document.createElement('span');
    let progressBar = document.createElement('img');
 
-   switch (index) {
+   switch (props.wizardStep) {
       case 0:
          topText.textContent = 'Choose your fighter';
          progressBar.src = 'assets/progress/stepOne.svg';
