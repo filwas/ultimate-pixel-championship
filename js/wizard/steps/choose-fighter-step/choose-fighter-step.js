@@ -1,6 +1,7 @@
 import { arrowButtonMaker } from '../../../components/buttonMaker.js';
 import { characterData } from '../../../components/characterData.js';
 import { characterProfileMaker } from '../../../components/characterProfileMaker.js';
+import { initWizard } from '../../wizard.js';
 
 /**
  * @param {number} characterIndex
@@ -46,17 +47,17 @@ export const chooseFighterStep = (characterIndex) => {
 
    function changeHero(event) {
       let increment = event.target.id == 'right' ? 1 : -1;
-      let progressWrapper = chooseFighterStepWrapper.parentElement.childNodes[0];
-      progressWrapper.insertAdjacentElement(
-         'afterend',
-         chooseFighterStep(parseInt(characterIndex + increment)),
+      let wizardWrapper = chooseFighterStepWrapper.parentElement;
+      let wizardsScreenWrapper = wizardWrapper.parentElement;
+
+      wizardsScreenWrapper.append(
+         initWizard({
+            wizardStep: 0,
+            characterIndex: parseInt(characterIndex + increment),
+         }),
       );
 
-      progressWrapper.parentElement.parentElement.setAttribute(
-         'characterIndex',
-         parseInt(characterIndex + increment),
-      );
-      chooseFighterStepWrapper.remove();
+      wizardWrapper.remove();
    }
 
    return chooseFighterStepWrapper;
