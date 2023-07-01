@@ -1,6 +1,6 @@
 import { characterProfileMaker } from './characterProfileMaker.js';
 import { characterData } from './characterData.js';
-import { arrowButtonMaker } from '../../../components/arrowButtonMaker.js';
+import { arrowButtonMaker } from '../../../components/buttonMaker.js';
 
 export const chooseFighterStep = (index = 0) => {
    const chooseFighterStepWrapper = document.createElement('div');
@@ -16,18 +16,14 @@ export const chooseFighterStep = (index = 0) => {
    let characterShadow = document.createElement('img');
    let characterName = document.createElement('span');
 
-   //let rightArrow = arrowButtonMaker({ image: 'right', index: index });
-   //let leftArrow = arrowButtonMaker({ type: 'left', index: index, });
-   let leftArrow = arrowButtonMaker({
-      image: 'url(assets/buttonPrev.svg)',
-      onClick: changeHero,
-   });
-   leftArrow.style.left = '0%';
    let rightArrow = arrowButtonMaker({
-      image: 'url(assets/buttonNext.svg)',
+      direction: 'right',
       onClick: changeHero,
    });
-   rightArrow.style.right = '0%';
+   let leftArrow = arrowButtonMaker({
+      direction: 'left',
+      onClick: changeHero,
+   });
 
    topText.textContent = 'Choose your fighter';
    progressBar.src = 'assets/progress/stepOne.svg';
@@ -54,7 +50,12 @@ export const chooseFighterStep = (index = 0) => {
    index != 5 && chooseFighterStepWrapper.appendChild(rightArrow);
    index != 0 && chooseFighterStepWrapper.appendChild(leftArrow);
 
-   function changeHero() {}
+   function changeHero(event) {
+      let increment = event.target.id == 'right' ? 1 : -1;
+      let wizardWrapper = chooseFighterStepWrapper.parentElement;
+      wizardWrapper.prepend(chooseFighterStep(index + increment));
+      chooseFighterStepWrapper.remove();
+   }
 
    return chooseFighterStepWrapper;
 };

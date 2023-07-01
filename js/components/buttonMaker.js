@@ -55,11 +55,32 @@ export function bigButtonMaker(props) {
 
 /**
  * Creates a button of the arrow type.
- * @param {object} props - The properties of the big button.
- * @param {string} props.text - The text to be displayed on the button.
- * @param {string} props.background - The background color of the button.
- * @param {string} props.fontColor - The color of the text.
+ * @param {object} props - The properties of the arrow button.
+ * @param {string} props.direction - Allows to create a "left" or "right" arrow button.
  * @param {void} props.onClick - Function to be executed on clicking the button.
  * @returns {HTMLElement} - The generated button element.
  */
-export function arrowButtonMaker(props) {}
+export function arrowButtonMaker(props) {
+   if (props.direction !== 'left' && props.direction !== 'right') {
+      throw new Error('Invalid input type. Only "left" and "right" arrows are allowed.');
+   }
+   let button = buttonMaker({
+      width: '61px',
+      height: '60px',
+      onClick: props.onClick,
+   });
+
+   button.classList.add('arrowButton');
+
+   if (props.direction == 'left') {
+      button.style.backgroundImage = 'url(assets/buttonPrev.svg)';
+      button.style.left = '0%';
+      button.id = 'left';
+   } else {
+      button.style.backgroundImage = 'url(assets/buttonNext.svg)';
+      button.style.right = '0%';
+      button.id = 'right';
+   }
+
+   return button;
+}
