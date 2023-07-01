@@ -1,4 +1,4 @@
-import { formElementMaker } from '../../../components/inputMaker.js';
+import { formElementMaker } from '../../../components/formMakerFunctions.js';
 
 /**
  * Function that creates the step that includes a form.
