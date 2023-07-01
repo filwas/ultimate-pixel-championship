@@ -1,6 +1,6 @@
 /**
  * Creates the input bar.
- * @param {object} props - The properties of progress bar.
+ * @param {object} props - The properties of input bar.
  * @param {string} props.type - Can be of text or email.
  * @returns {HTMLInputElement} - The generated input element.
  * @throws {Error} - Throws an error if the type is not "text" or "email".

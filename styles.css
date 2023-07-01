@@ -101,8 +101,5 @@ body {
    font-size: 18px;
    color: #9F9F9F;
    text-align: left;
-}
-
-.inputStyle::placeholder{
    padding-left: 17px;
 }

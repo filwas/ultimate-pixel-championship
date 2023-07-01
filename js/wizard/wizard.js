@@ -3,32 +3,33 @@ import { bookingDetailsStep } from './steps/booking-details-step/booking-details
 import { bookingConfirmationStep } from './steps/booking-confirmation-step/booking-confirmation-step.js';
 import { progressMaker } from '../components/progressMaker.js';
 import { wizardButtonWrapper } from '../components/wizardButtonWrapper.js';
-import { characterData } from '../components/characterData.js';
-
-export const initWizard = (wizardStep = 0) => {
+/**
+ * Creates the wizard.
+ * @param {object} props - The properties of the wizard.
+ * @param {number} props.wizardStep - Current step of the wizard.
+ * @param {number} props.characterIndex - Current chosen character.
+ * @returns {HTMLElement} - The generated wizard.
+ */
+export const initWizard = (props) => {
    const wizardWrapper = document.createElement('div');
    wizardWrapper.id = 'wizardWrapper';
    wizardWrapper.classList.add('genericScreenStyle');
 
-   let progressBar = progressMaker({ wizardStep });
+   let progressBar = progressMaker({ wizardStep: props.wizardStep });
 
-   const steps = [chooseFighterStep(), bookingDetailsStep(), bookingConfirmationStep()];
+   const steps = [
+      chooseFighterStep(props.characterIndex),
+      bookingDetailsStep(props.characterIndex),
+      bookingConfirmationStep(),
+   ];
 
-   let wizardButtons = wizardButtonWrapper({ wizardStep });
+   let wizardButtons = wizardButtonWrapper({ wizardStep: props.wizardStep });
 
    wizardWrapper.append(progressBar);
 
-   // I displaying only active step in my HTML
-   wizardWrapper.append(steps[wizardStep]);
+   wizardWrapper.append(steps[props.wizardStep]);
 
    wizardWrapper.append(wizardButtons);
 
-   function nextWizardStep() {
-      let characterName =
-         characterData[wizardWrapper.childNodes[1].getAttribute('characterIndex')].name;
-      let wizardScreen = wizardWrapper.parentElement;
-      wizardWrapper.remove();
-      wizardScreen.append(initWizard((wizardStep + 1) % 3)); // modulo 3 in this step cicles back to choose-fighter-step
-   }
    return wizardWrapper;
 };

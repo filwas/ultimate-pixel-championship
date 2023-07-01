@@ -4,6 +4,7 @@ import { bigButtonMaker } from './buttonMaker.js';
  * Creates the buttons for the wizard.
  * @param {object} props - The properties of the button wrapper.
  * @param {number} props.wizardStep - Current step of the wizard.
+ * @param {number} props.characterIndex - Current chosen character.
  * @returns {HTMLElement} - The generated wizard buttons element.
  */
 export function wizardButtonWrapper(props) {
@@ -56,7 +57,14 @@ export function wizardButtonWrapper(props) {
 
       let increment = event.target.getAttribute('type') == 'proceed' ? 1 : -1;
 
-      wizardScreenWrapper.append(initWizard(props.wizardStep + increment));
+      let newWizardStep = (props.wizardStep + increment) % 3;
+      wizardScreenWrapper.append(
+         initWizard({
+            wizardStep: newWizardStep,
+            characterIndex:
+               newWizardStep == 0 ? 0 : wizardScreenWrapper.getAttribute('characterIndex'),
+         }),
+      );
       wizardWrapper.remove();
    }
 

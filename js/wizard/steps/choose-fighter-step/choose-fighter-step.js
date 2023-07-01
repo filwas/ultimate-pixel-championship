@@ -2,13 +2,12 @@ import { arrowButtonMaker } from '../../../components/buttonMaker.js';
 import { characterData } from '../../../components/characterData.js';
 import { characterProfileMaker } from '../../../components/characterProfileMaker.js';
 
-export const chooseFighterStep = (index = 0) => {
+export const chooseFighterStep = (characterIndex) => {
    const chooseFighterStepWrapper = document.createElement('div');
    chooseFighterStepWrapper.id = 'chooseFighterStepWrapper';
    chooseFighterStepWrapper.classList.add('genericScreenStyle');
-   chooseFighterStepWrapper.setAttribute('characterIndex', index);
 
-   let characterDetails = characterData[index];
+   let characterDetails = characterData[characterIndex];
    let characterProfile = characterProfileMaker(characterDetails);
 
    let characterImage = document.createElement('img');
@@ -38,13 +37,21 @@ export const chooseFighterStep = (index = 0) => {
    chooseFighterStepWrapper.appendChild(characterShadow);
    chooseFighterStepWrapper.appendChild(characterName);
    chooseFighterStepWrapper.appendChild(characterProfile);
-   index != 5 && chooseFighterStepWrapper.appendChild(rightArrow);
-   index != 0 && chooseFighterStepWrapper.appendChild(leftArrow);
+   characterIndex != 5 && chooseFighterStepWrapper.appendChild(rightArrow);
+   characterIndex != 0 && chooseFighterStepWrapper.appendChild(leftArrow);
 
    function changeHero(event) {
       let increment = event.target.id == 'right' ? 1 : -1;
       let progressWrapper = chooseFighterStepWrapper.parentElement.childNodes[0];
-      progressWrapper.insertAdjacentElement('afterend', chooseFighterStep(index + increment));
+      progressWrapper.insertAdjacentElement(
+         'afterend',
+         chooseFighterStep(characterIndex + increment),
+      );
+
+      progressWrapper.parentElement.parentElement.setAttribute(
+         'characterIndex',
+         characterIndex + increment,
+      );
       chooseFighterStepWrapper.remove();
    }
 
