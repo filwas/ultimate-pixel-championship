@@ -23,7 +23,10 @@ export const initWizard = (props) => {
       bookingConfirmationStep(),
    ];
 
-   let wizardButtons = wizardButtonWrapper({ wizardStep: props.wizardStep });
+   let wizardButtons = wizardButtonWrapper({
+      wizardStep: props.wizardStep,
+      characterIndex: props.characterIndex,
+   });
 
    wizardWrapper.append(progressBar);
 

@@ -61,10 +61,10 @@ export function wizardButtonWrapper(props) {
       wizardScreenWrapper.append(
          initWizard({
             wizardStep: newWizardStep,
-            characterIndex:
-               newWizardStep == 0 ? 0 : wizardScreenWrapper.getAttribute('characterIndex'),
+            characterIndex: parseInt(wizardScreenWrapper.getAttribute('characterIndex')),
          }),
       );
+
       wizardWrapper.remove();
    }
 

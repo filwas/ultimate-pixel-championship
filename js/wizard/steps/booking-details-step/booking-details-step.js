@@ -1,6 +1,11 @@
 import { characterData } from '../../../components/characterData.js';
 import { inputMaker } from '../../../components/inputMaker.js';
 
+/**
+ *
+ * @param {number} characterIndex
+ * @returns
+ */
 export const bookingDetailsStep = (characterIndex) => {
    const bookingDetailsStepWrapper = document.createElement('div');
    bookingDetailsStepWrapper.classList.add('genericScreenStyle');

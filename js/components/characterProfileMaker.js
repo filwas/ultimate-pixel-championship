@@ -1,4 +1,6 @@
-export function characterProfileMaker(characterDetails) {
+import { characterData } from './characterData.js';
+export function characterProfileMaker(characterIndex) {
+   let characterDetails = characterData[characterIndex];
    let characterProfile = document.createElement('div');
    characterProfile.id = 'characterProfile';
 

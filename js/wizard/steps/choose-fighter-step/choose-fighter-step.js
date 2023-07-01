@@ -2,13 +2,17 @@ import { arrowButtonMaker } from '../../../components/buttonMaker.js';
 import { characterData } from '../../../components/characterData.js';
 import { characterProfileMaker } from '../../../components/characterProfileMaker.js';
 
+/**
+ * @param {number} characterIndex
+ * @returns
+ */
 export const chooseFighterStep = (characterIndex) => {
    const chooseFighterStepWrapper = document.createElement('div');
    chooseFighterStepWrapper.id = 'chooseFighterStepWrapper';
    chooseFighterStepWrapper.classList.add('genericScreenStyle');
 
    let characterDetails = characterData[characterIndex];
-   let characterProfile = characterProfileMaker(characterDetails);
+   let characterProfile = characterProfileMaker(characterIndex);
 
    let characterImage = document.createElement('img');
    let characterShadow = document.createElement('img');
@@ -45,12 +49,12 @@ export const chooseFighterStep = (characterIndex) => {
       let progressWrapper = chooseFighterStepWrapper.parentElement.childNodes[0];
       progressWrapper.insertAdjacentElement(
          'afterend',
-         chooseFighterStep(characterIndex + increment),
+         chooseFighterStep(parseInt(characterIndex + increment)),
       );
 
       progressWrapper.parentElement.parentElement.setAttribute(
          'characterIndex',
-         characterIndex + increment,
+         parseInt(characterIndex + increment),
       );
       chooseFighterStepWrapper.remove();
    }
