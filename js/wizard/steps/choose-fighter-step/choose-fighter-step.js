@@ -3,9 +3,9 @@ import { characterData } from '../../../components/characterData.js';
 import { characterProfileMaker } from '../../../components/characterProfileMaker.js';
 import { initWizard } from '../../wizard.js';
 
-/**
- * @param {number} characterIndex
- * @returns
+/** This step displays the characters available to the users.
+ * @param {number} characterIndex - Current displayed character.
+ * @returns {HTMLElement} - The wrapper containing character display.
  */
 export const chooseFighterStep = (characterIndex) => {
    const chooseFighterStepWrapper = document.createElement('div');
