@@ -1,6 +1,6 @@
 import { characterProfileMaker } from './characterProfileMaker.js';
 import { characterData } from './characterData.js';
-import { arrowButtonMaker } from '../../../components/arrowButtonMaker.js';
+import { arrowButtonMaker } from '../../../components/buttonMaker.js';
 
 export const chooseFighterStep = (index = 0) => {
    const chooseFighterStepWrapper = document.createElement('div');
@@ -15,8 +15,14 @@ export const chooseFighterStep = (index = 0) => {
    let characterShadow = document.createElement('img');
    let characterName = document.createElement('span');
 
-   let rightArrow = arrowButtonMaker({ type: 'right', index: index });
-   let leftArrow = arrowButtonMaker({ type: 'left', index: index });
+   let rightArrow = arrowButtonMaker({
+      direction: 'right',
+      onClick: changeHero,
+   });
+   let leftArrow = arrowButtonMaker({
+      direction: 'left',
+      onClick: changeHero,
+   });
 
    characterImage.src = characterDetails.src;
    characterShadow.src = 'assets/characterShadow.svg';
@@ -34,6 +40,13 @@ export const chooseFighterStep = (index = 0) => {
    chooseFighterStepWrapper.appendChild(characterProfile);
    index != 5 && chooseFighterStepWrapper.appendChild(rightArrow);
    index != 0 && chooseFighterStepWrapper.appendChild(leftArrow);
+
+   function changeHero(event) {
+      let increment = event.target.id == 'right' ? 1 : -1;
+      let wizardWrapper = chooseFighterStepWrapper.parentElement;
+      wizardWrapper.prepend(chooseFighterStep(index + increment));
+      chooseFighterStepWrapper.remove();
+   }
 
    return chooseFighterStepWrapper;
 };

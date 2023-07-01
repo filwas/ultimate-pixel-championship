@@ -1,4 +1,4 @@
-import { bigButtonMaker } from '../components/bigButtonMaker.js';
+import { bigButtonMaker, buttonMaker } from '../components/buttonMaker.js';
 import { wizardScreen } from './wizard-screen.js';
 /**
  * This function creates the welcome screen.
@@ -21,7 +21,14 @@ export const welcomeScreen = () => {
       welcomeStepWrapper.remove();
       app.appendChild(wizardScreen());
    }
-   let button = bigButtonMaker({ type: 'proceed', text: 'Proceed.', onClick: welcomeClick });
+   let button = bigButtonMaker({
+      text: 'Choose',
+      background: '#DA8B14',
+      fontColor: '#0F0F0F',
+      onClick: welcomeClick,
+   });
+
+   //bigButtonMaker({ background: '#DA8B14', text: 'Proceed.', onClick: welcomeClick });
 
    // 3. Add text and image sources.
    nameFirstPart.textContent = 'Ultimate Pix\n';
