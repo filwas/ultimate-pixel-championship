@@ -10,6 +10,7 @@ import { CharacterDataObject } from '../hard data/characterData.js';
  * @param {object} props - The properties of the wizard.
  * @param {number} props.wizardStep - Current step of the wizard.
  * @param {CharacterDataObject} props.characterObject - Current chosen character.
+ * @param {FormData} props.formData - Object containing form submission data.
  * @returns {HTMLElement} - The generated wizard.
  */
 export const initWizard = (props) => {
@@ -21,7 +22,7 @@ export const initWizard = (props) => {
    const steps = [
       chooseFighterStep(props.characterObject),
       bookingDetailsStep(props.characterObject),
-      bookingConfirmationStep(),
+      bookingConfirmationStep(props.formData),
    ];
 
    let wizardButtons = wizardButtonWrapper(props);
