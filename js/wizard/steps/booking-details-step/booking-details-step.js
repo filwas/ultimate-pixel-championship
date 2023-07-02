@@ -1,12 +1,12 @@
-import { characterData } from '../../../components/characterData.js';
+import { CharacterDataObject } from '/js/hard data/characterData.js';
 import { inputMaker } from '../../../components/inputMaker.js';
 
 /**
  *
- * @param {number} characterIndex
+ * @param {CharacterDataObject} characterObject
  * @returns
  */
-export const bookingDetailsStep = (characterIndex) => {
+export const bookingDetailsStep = (characterObject) => {
    const bookingDetailsStepWrapper = document.createElement('div');
    bookingDetailsStepWrapper.classList.add('genericScreenStyle');
    bookingDetailsStepWrapper.id = 'bookingDetailsStepWrapper';
@@ -25,7 +25,7 @@ export const bookingDetailsStep = (characterIndex) => {
    let nameText = document.createElement('span');
    nameText.textContent = 'CHOSEN FIGHTER\n';
    let charName = document.createElement('span');
-   charName.textContent = characterData[characterIndex].name;
+   charName.textContent = characterObject.name;
    charName.classList.add('bigText');
    charName.style.fontSize = '30px';
 

@@ -1,19 +1,19 @@
 import { arrowButtonMaker } from '../../../components/buttonMaker.js';
-import { characterData } from '../../../components/characterData.js';
 import { characterProfileMaker } from '../../../components/characterProfileMaker.js';
+import { CharacterDataObject, characters } from '../../../hard data/characterData.js';
 import { initWizard } from '../../wizard.js';
 
 /**
- * @param {number} characterIndex
+ * @param {CharacterDataObject} characterObject
  * @returns
  */
-export const chooseFighterStep = (characterIndex) => {
+export const chooseFighterStep = (characterObject) => {
    const chooseFighterStepWrapper = document.createElement('div');
    chooseFighterStepWrapper.id = 'chooseFighterStepWrapper';
    chooseFighterStepWrapper.classList.add('genericScreenStyle');
 
-   let characterDetails = characterData[characterIndex];
-   let characterProfile = characterProfileMaker(characterIndex);
+   let characterProfile = characterProfileMaker(characterObject);
+   let characterIndex = characters.indexOf(characterObject);
 
    let characterImage = document.createElement('img');
    let characterShadow = document.createElement('img');
@@ -28,9 +28,9 @@ export const chooseFighterStep = (characterIndex) => {
       onClick: changeHero,
    });
 
-   characterImage.src = characterDetails.src;
+   characterImage.src = characterObject.src;
    characterShadow.src = 'assets/characterShadow.svg';
-   characterName.textContent = characterDetails.name;
+   characterName.textContent = characterObject.name;
 
    characterImage.style.marginTop = '30px';
    characterImage.style.zIndex = '2';
@@ -42,7 +42,7 @@ export const chooseFighterStep = (characterIndex) => {
    chooseFighterStepWrapper.appendChild(characterShadow);
    chooseFighterStepWrapper.appendChild(characterName);
    chooseFighterStepWrapper.appendChild(characterProfile);
-   characterIndex != 5 && chooseFighterStepWrapper.appendChild(rightArrow);
+   characterIndex != characters.length - 1 && chooseFighterStepWrapper.appendChild(rightArrow);
    characterIndex != 0 && chooseFighterStepWrapper.appendChild(leftArrow);
 
    function changeHero(event) {
@@ -53,7 +53,7 @@ export const chooseFighterStep = (characterIndex) => {
       wizardsScreenWrapper.append(
          initWizard({
             wizardStep: 0,
-            characterIndex: parseInt(characterIndex + increment),
+            characterObject: characters[parseInt(characterIndex + increment)],
          }),
       );
 
