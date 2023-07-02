@@ -19,6 +19,7 @@ export const initWizard = (props) => {
    wizardWrapper.classList.add('genericScreenStyle');
 
    let progressBar = progressMaker(props);
+
    const steps = [
       chooseFighterStep(props.characterObject),
       bookingDetailsStep(props.characterObject),

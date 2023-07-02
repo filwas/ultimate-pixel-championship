@@ -76,6 +76,14 @@ export function wizardButtonWrapper(props) {
       let wizardScreenWrapper = wizardWrapper.parentElement;
       let form = wizardWrapper.childNodes[1].firstChild;
 
+      let validityCount = 0;
+      form.querySelectorAll('input').forEach((input) => {
+         if (input.reportValidity()) validityCount++;
+      });
+      if (validityCount < 3) return; //love me some validityCount <3<3<3
+      // well I'm not actually loving it, just couldn't figure out how to
+      // stop submitClick() function from within the forEach function. :(
+
       let formData = new FormData(form);
 
       wizardScreenWrapper.append(

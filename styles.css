@@ -32,6 +32,8 @@ body {
       url('node_modules/typeface-roboto-mono/files/roboto-mono-latin-400.woff2') format('woff2');
 }
 
+
+
 .bigText {
    font-family: Germania One, cursive;
    font-size: 45px;
@@ -99,7 +101,39 @@ body {
    height: 50px;
    background: #31251E;
    font-size: 18px;
-   color: #9F9F9F;
+   color: white;
    text-align: left;
    padding-left: 17px;
+}
+
+.inputStyle:placeholder-shown{
+   color: #9F9F9F;
+}
+
+.inputStyle:invalid {
+   border: 1px solid red;
+}
+
+.inputStyle:invalid:placeholder-shown {
+   border: none
+}
+
+.inputStyle:invalid:focus {
+   border: none
+}
+
+.errorStyle {
+   visibility: hidden;
+   color: red
+}
+.inputStyle:invalid ~ .errorStyle {
+   visibility: visible;
+}
+
+.inputStyle:invalid:placeholder-shown ~ .errorStyle {
+   visibility: hidden;
+}
+
+.inputStyle:invalid:focus ~ .errorStyle {
+   visibility: hidden;
 }
