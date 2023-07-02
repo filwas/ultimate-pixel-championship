@@ -3,11 +3,13 @@ import { bookingDetailsStep } from './steps/booking-details-step/booking-details
 import { bookingConfirmationStep } from './steps/booking-confirmation-step/booking-confirmation-step.js';
 import { progressMaker } from '../components/progressMaker.js';
 import { wizardButtonWrapper } from '../components/wizardButtonWrapper.js';
+import { CharacterDataObject } from '../hard data/characterData.js';
+
 /**
  * Creates the wizard.
  * @param {object} props - The properties of the wizard.
  * @param {number} props.wizardStep - Current step of the wizard.
- * @param {number} props.characterIndex - Current chosen character.
+ * @param {CharacterDataObject} props.characterObject - Current chosen character.
  * @returns {HTMLElement} - The generated wizard.
  */
 export const initWizard = (props) => {
@@ -16,10 +18,9 @@ export const initWizard = (props) => {
    wizardWrapper.classList.add('genericScreenStyle');
 
    let progressBar = progressMaker(props);
-
    const steps = [
-      chooseFighterStep(props.characterIndex),
-      bookingDetailsStep(props.characterIndex),
+      chooseFighterStep(props.characterObject),
+      bookingDetailsStep(props.characterObject),
       bookingConfirmationStep(),
    ];
 

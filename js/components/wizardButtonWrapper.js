@@ -1,10 +1,11 @@
+import { CharacterDataObject } from '../hard data/characterData.js';
 import { initWizard } from '../wizard/wizard.js';
 import { bigButtonMaker } from './buttonMaker.js';
 /**
  * Creates the buttons for the wizard.
  * @param {object} props - The properties of the button wrapper.
  * @param {number} props.wizardStep - Current step of the wizard.
- * @param {number} props.characterIndex - Current chosen character.
+ * @param {CharacterDataObject} props.characterObject - Current chosen character.
  * @returns {HTMLElement} - The generated wizard buttons element.
  */
 export function wizardButtonWrapper(props) {
@@ -61,7 +62,7 @@ export function wizardButtonWrapper(props) {
       wizardScreenWrapper.append(
          initWizard({
             wizardStep: newWizardStep,
-            characterIndex: props.characterIndex,
+            characterObject: props.characterObject,
          }),
       );
 

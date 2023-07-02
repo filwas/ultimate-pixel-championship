@@ -1,11 +1,12 @@
+import { CharacterDataObject } from '/js/hard data/characterData.js';
 import { formElementMaker } from '../../../components/formMakerFunctions.js';
 
 /**
- * Function that creates the step that includes a form.
- * @param {number} characterIndex - Character chosen by the user.
- * @returns {HTMLElement} - Wrapper containing the form.
+ *
+ * @param {CharacterDataObject} characterObject
+ * @returns
  */
-export const bookingDetailsStep = (characterIndex) => {
+export const bookingDetailsStep = (characterObject) => {
    const bookingDetailsStepWrapper = document.createElement('div');
    bookingDetailsStepWrapper.classList.add('genericScreenStyle');
    bookingDetailsStepWrapper.id = 'bookingDetailsStepWrapper';
@@ -16,7 +17,7 @@ export const bookingDetailsStep = (characterIndex) => {
    let charNameElement = formElementMaker({
       blockName: 'CHOSEN FIGHTER',
       blockType: 'charName',
-      characterIndex: characterIndex,
+      characterObject: characterObject,
    });
    let userNameElement = formElementMaker({
       blockName: 'COMMANDER',

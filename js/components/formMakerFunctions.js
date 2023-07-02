@@ -1,4 +1,4 @@
-import { characterData } from './characterData.js';
+import { CharacterDataObject } from '../hard data/characterData.js';
 
 /**
  * Creates the input bar.
@@ -28,7 +28,7 @@ export function inputMaker(props) {
  * @param {object} props - The properties of the form block.
  * @param {string} props.blockName - info to be displayed on top
  * @param {string} props.blockType - Allowed types: "charName", "userName", "email"
- * @param {number} props.characterIndex - Needed in case of type = charName
+ * @param {CharacterDataObject} props.characterObject - Needed in case of type = charName
  * @returns {HTMLDivElement}
  */
 export function formElementMaker(props) {
@@ -52,7 +52,7 @@ export function formElementMaker(props) {
    switch (props.blockType) {
       case 'charName':
          blockEssence = document.createElement('span');
-         blockEssence.textContent = characterData[props.characterIndex].name;
+         blockEssence.textContent = props.characterObject.name;
          blockEssence.classList.add('bigText');
          blockEssence.style.fontSize = '30px';
          break;

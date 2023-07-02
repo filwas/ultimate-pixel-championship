@@ -1,4 +1,4 @@
-export const characterData = [
+const characterData = [
    {
       name: 'Annoyed Karen',
       src: 'assets/characters/annoyedKaren.svg',
@@ -54,3 +54,37 @@ export const characterData = [
       weakness: 'Broccoli',
    },
 ];
+
+/**
+ * @class {Object} CharacterDataObject
+ * @property {string} name - Character's name.
+ * @property {string} src - URL for the character's image.
+ * @property {number} hp - Character's max health points.
+ * @property {number} minAtk - Character's minimum atack value.
+ * @property {number} maxAtk - Character's maximum atack value.
+ * @property {string} special - Character's special attack name.
+ * @property {string} weakness - Character's weakness.
+ */
+export class CharacterDataObject {
+   constructor(name, src, hp, minAtk, maxAtk, special, weakness) {
+      this.name = name;
+      this.src = src;
+      this.hp = hp;
+      this.minAtk = minAtk;
+      this.maxAtk = maxAtk;
+      this.special = special;
+      this.weakness = weakness;
+   }
+}
+
+export const characters = characterData.map((character) => {
+   return new CharacterDataObject(
+      character.name,
+      character.src,
+      character.hp,
+      character.minAtk,
+      character.maxAtk,
+      character.special,
+      character.weakness,
+   );
+});
