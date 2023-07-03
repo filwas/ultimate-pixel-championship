@@ -1,37 +1,36 @@
 import { chooseFighterStep } from './steps/choose-fighter-step/choose-fighter-step.js';
 import { bookingDetailsStep } from './steps/booking-details-step/booking-details-step.js';
 import { bookingConfirmationStep } from './steps/booking-confirmation-step/booking-confirmation-step.js';
-import { bigButtonMaker } from '../components/buttonMaker.js';
+import { progressMaker } from '../components/progressMaker.js';
+import { wizardButtonWrapper } from '../components/wizardButtonWrapper.js';
+import { CharacterDataObject } from '../hard data/characterData.js';
 
-export const initWizard = (index = 0) => {
-   let proceedButtonProps = {
-      background: '#DA8B14',
-      text: index == 0 ? 'Choose fighter!' : 'Continue',
-      onClick: nextWizardStep,
-   };
-   let button = bigButtonMaker(proceedButtonProps);
-   // I keep steps in the array, so Im able to navigate through
-   const steps = [chooseFighterStep(), bookingDetailsStep(), bookingConfirmationStep()];
-
-   // I need to monitor which step is active. You can change value to see how step changes. Try 2 for example.
-   const currentStepIndex = index;
-
-   // I need to know max steps amount, to prevent going to far
-   const maxSteps = steps.length;
-
+/**
+ * Creates the wizard.
+ * @param {object} props - The properties of the wizard.
+ * @param {number} props.wizardStep - Current step of the wizard.
+ * @param {CharacterDataObject} props.characterObject - Current chosen character.
+ * @returns {HTMLElement} - The generated wizard.
+ */
+export const initWizard = (props) => {
    const wizardWrapper = document.createElement('div');
-   wizardWrapper.classList.add('genericScreenStyle');
    wizardWrapper.id = 'wizardWrapper';
+   wizardWrapper.classList.add('genericScreenStyle');
 
-   // I displaying only active step in my HTML
-   wizardWrapper.append(steps[currentStepIndex]);
+   let progressBar = progressMaker(props);
+   const steps = [
+      chooseFighterStep(props.characterObject),
+      bookingDetailsStep(props.characterObject),
+      bookingConfirmationStep(),
+   ];
 
-   wizardWrapper.append(button);
+   let wizardButtons = wizardButtonWrapper(props);
 
-   function nextWizardStep() {
-      let wizardScreen = wizardWrapper.parentElement;
-      wizardWrapper.remove();
-      wizardScreen.append(initWizard((index + 1) % 3)); // modulo 3 in this step cicles back to choose-fighter-step
-   }
+   wizardWrapper.append(progressBar);
+
+   wizardWrapper.append(steps[props.wizardStep]);
+
+   wizardWrapper.append(wizardButtons);
+
    return wizardWrapper;
 };

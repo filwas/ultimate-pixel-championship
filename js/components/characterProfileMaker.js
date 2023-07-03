@@ -1,5 +1,12 @@
-export function characterProfileMaker(characterDetails) {
+import { CharacterDataObject } from '../hard data/characterData';
+
+/**
+ * @param {CharacterDataObject} characterObject
+ * @returns
+ */
+export function characterProfileMaker(characterObject) {
    let characterProfile = document.createElement('div');
+   characterProfile.id = 'characterProfile';
 
    let hpAndAtk = document.createElement('div');
 
@@ -7,25 +14,25 @@ export function characterProfileMaker(characterDetails) {
    let hpText = document.createElement('span');
    hpText.textContent = 'HEALTH\n';
    let hpNumber = document.createElement('span');
-   hpNumber.textContent = characterDetails.hp;
+   hpNumber.textContent = characterObject.hp;
 
    let atk = document.createElement('div');
    let atkText = document.createElement('span');
    atkText.textContent = 'ATTACK\n';
    let atkNumber = document.createElement('span');
-   atkNumber.textContent = characterDetails.minAtk + ' - ' + characterDetails.maxAtk;
+   atkNumber.textContent = characterObject.minAtk + ' - ' + characterObject.maxAtk;
 
    let specialAtk = document.createElement('div');
    let specialText = document.createElement('span');
    specialText.textContent = 'SPECIAL ATTACK\n';
    let specialString = document.createElement('span');
-   specialString.textContent = characterDetails.special;
+   specialString.textContent = characterObject.special;
 
    let weakness = document.createElement('div');
    let weaknessText = document.createElement('span');
    weaknessText.textContent = 'WEAKNESS\n';
    let weaknessString = document.createElement('span');
-   weaknessString.textContent = characterDetails.weakness;
+   weaknessString.textContent = characterObject.weakness;
 
    characterProfile.classList.add('smallText');
    characterProfile.style.color = '#DA8B14';
@@ -36,10 +43,6 @@ export function characterProfileMaker(characterDetails) {
    atk.classList.add('allCharacterData');
    specialAtk.classList.add('allCharacterData');
    weakness.classList.add('allCharacterData');
-
-   //So I tried making the next couple lines with
-   //[hpNumber, atkNumber, ...].forEach(prop => {"addBigText, 18px and white"})
-   //but got an error saying html elements don't have these properties.
 
    hpNumber.classList.add('bigText');
    hpNumber.style.fontSize = '18px';

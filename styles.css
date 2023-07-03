@@ -84,8 +84,22 @@ body {
    align-items: end;
 }
 
-.arrowButton{
+.arrowButton {
    position: absolute;
    top: 50%;
 }
 
+.formStyle {
+   display: grid;
+   justify-items: start;
+}
+
+.inputStyle {
+   width: 255px;
+   height: 50px;
+   background: #31251E;
+   font-size: 18px;
+   color: #9F9F9F;
+   text-align: left;
+   padding-left: 17px;
+}

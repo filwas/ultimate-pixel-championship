@@ -1,17 +1,20 @@
-import { characterProfileMaker } from './characterProfileMaker.js';
-import { characterData } from './characterData.js';
 import { arrowButtonMaker } from '../../../components/buttonMaker.js';
+import { characterProfileMaker } from '../../../components/characterProfileMaker.js';
+import { CharacterDataObject, characters } from '../../../hard data/characterData.js';
+import { initWizard } from '../../wizard.js';
 
-export const chooseFighterStep = (index = 0) => {
+/**
+ * @param {CharacterDataObject} characterObject
+ * @returns
+ */
+export const chooseFighterStep = (characterObject) => {
    const chooseFighterStepWrapper = document.createElement('div');
    chooseFighterStepWrapper.id = 'chooseFighterStepWrapper';
    chooseFighterStepWrapper.classList.add('genericScreenStyle');
 
-   let characterDetails = characterData[index];
-   let characterProfile = characterProfileMaker(characterDetails);
+   let characterProfile = characterProfileMaker(characterObject);
+   let characterIndex = characters.indexOf(characterObject);
 
-   let topText = document.createElement('span');
-   let progressBar = document.createElement('img');
    let characterImage = document.createElement('img');
    let characterShadow = document.createElement('img');
    let characterName = document.createElement('span');
@@ -25,36 +28,36 @@ export const chooseFighterStep = (index = 0) => {
       onClick: changeHero,
    });
 
-   topText.textContent = 'Choose your fighter';
-   progressBar.src = 'assets/progress/stepOne.svg';
-   characterImage.src = characterDetails.src;
+   characterImage.src = characterObject.src;
    characterShadow.src = 'assets/characterShadow.svg';
-   characterName.textContent = characterDetails.name;
+   characterName.textContent = characterObject.name;
 
-   topText.classList.add('bigText');
-   topText.style.fontSize = '30px';
-   topText.style.color = '#DA8B14';
-   progressBar.style.marginTop = '15px';
    characterImage.style.marginTop = '30px';
    characterImage.style.zIndex = '2';
    characterShadow.style.marginTop = '-10px';
    characterName.classList.add('bigText');
    characterName.style.fontSize = '30px';
 
-   chooseFighterStepWrapper.appendChild(topText);
-   chooseFighterStepWrapper.appendChild(progressBar);
    chooseFighterStepWrapper.appendChild(characterImage);
    chooseFighterStepWrapper.appendChild(characterShadow);
    chooseFighterStepWrapper.appendChild(characterName);
    chooseFighterStepWrapper.appendChild(characterProfile);
-   index != 5 && chooseFighterStepWrapper.appendChild(rightArrow);
-   index != 0 && chooseFighterStepWrapper.appendChild(leftArrow);
+   characterIndex != characters.length - 1 && chooseFighterStepWrapper.appendChild(rightArrow);
+   characterIndex != 0 && chooseFighterStepWrapper.appendChild(leftArrow);
 
    function changeHero(event) {
       let increment = event.target.id == 'right' ? 1 : -1;
       let wizardWrapper = chooseFighterStepWrapper.parentElement;
-      wizardWrapper.prepend(chooseFighterStep(index + increment));
-      chooseFighterStepWrapper.remove();
+      let wizardsScreenWrapper = wizardWrapper.parentElement;
+
+      wizardsScreenWrapper.append(
+         initWizard({
+            wizardStep: 0,
+            characterObject: characters[parseInt(characterIndex + increment)],
+         }),
+      );
+
+      wizardWrapper.remove();
    }
 
    return chooseFighterStepWrapper;
