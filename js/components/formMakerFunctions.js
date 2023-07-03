@@ -58,6 +58,8 @@ export function formElementMaker(props) {
    blockName.textContent = props.blockName;
 
    let blockEssence;
+   let blockError = document.createElement('span');
+   blockError.classList.add('errorTextOff');
 
    switch (props.blockType) {
       case 'charName':
@@ -70,8 +72,8 @@ export function formElementMaker(props) {
          hiddenInput.value = props.characterObject.name;
          // if we'd rather pass on the whole character object in the form, we could do it like this:
          //hiddenInput.value = JSON.stringify(props.characterObject)
-         blockEssence.appendChild(hiddenInput);
-         blockName.setAttribute('for', 'charName');
+         formElement.appendChild(hiddenInput);
+         blockName.setAttribute('for', hiddenInput.name);
          break;
 
       case 'userName':
@@ -82,6 +84,9 @@ export function formElementMaker(props) {
             required: true,
          });
          blockName.setAttribute('for', blockEssence.name);
+
+         formElement.append(blockError);
+         blockError.textContent = 'Please enter your name.';
          break;
 
       case 'email':
@@ -89,15 +94,18 @@ export function formElementMaker(props) {
          blockEssence.required = true;
          blockName.setAttribute('for', blockEssence.name);
 
-         let emailErrorMessage = document.createElement('span');
-         emailErrorMessage.classList.add('errorStyle');
-         emailErrorMessage.textContent = 'Enter the correct email address.';
-         formElement.append(emailErrorMessage);
+         formElement.append(blockError);
+         blockError.textContent = 'Enter the correct email address.';
          break;
 
       default:
          break;
    }
+
+   blockEssence.addEventListener('focusout', (event) => {
+      event.target.classList.remove('errorInput');
+      event.target.nextElementSibling.classList.remove('errorTextOn');
+   });
 
    formElement.prepend(blockEssence);
    formElement.prepend(blockName);

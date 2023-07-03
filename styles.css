@@ -110,30 +110,16 @@ body {
    color: #9F9F9F;
 }
 
-.inputStyle:invalid {
+.errorTextOff {
+   visibility: hidden;
+   color: red;
+}
+
+.errorTextOn {
+   visibility:visible;
+}
+
+.errorInput{
    border: 1px solid red;
 }
 
-.inputStyle:invalid:placeholder-shown {
-   border: none
-}
-
-.inputStyle:invalid:focus {
-   border: none
-}
-
-.errorStyle {
-   visibility: hidden;
-   color: red
-}
-.inputStyle:invalid ~ .errorStyle {
-   visibility: visible;
-}
-
-.inputStyle:invalid:placeholder-shown ~ .errorStyle {
-   visibility: hidden;
-}
-
-.inputStyle:invalid:focus ~ .errorStyle {
-   visibility: hidden;
-}

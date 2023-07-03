@@ -2,7 +2,6 @@ import { chooseFighterStep } from './steps/choose-fighter-step/choose-fighter-st
 import { bookingDetailsStep } from './steps/booking-details-step/booking-details-step.js';
 import { bookingConfirmationStep } from './steps/booking-confirmation-step/booking-confirmation-step.js';
 import { progressMaker } from '../components/progressMaker.js';
-import { wizardButtonWrapper } from '../components/wizardButtonWrapper.js';
 import { CharacterDataObject } from '../hard data/characterData.js';
 
 /**
@@ -21,18 +20,14 @@ export const initWizard = (props) => {
    let progressBar = progressMaker(props);
 
    const steps = [
-      chooseFighterStep(props.characterObject),
-      bookingDetailsStep(props.characterObject),
-      bookingConfirmationStep(props.formData),
+      chooseFighterStep(props),
+      bookingDetailsStep(props),
+      bookingConfirmationStep(props),
    ];
-
-   let wizardButtons = wizardButtonWrapper(props);
 
    wizardWrapper.append(progressBar);
 
    wizardWrapper.append(steps[props.wizardStep]);
-
-   wizardWrapper.append(wizardButtons);
 
    return wizardWrapper;
 };
