@@ -1,7 +1,6 @@
 /**
  * This function adds the top and bottom bars, which always appear on every screen.
- *
- * @param {HTMLDivElement} wrapper - Select the main wrapper.
+ * * @param {HTMLDivElement} wrapper - Select the main wrapper.
  */
 export const barAdder = (wrapper) => {
    let barAddress = './../assets/bar.svg';

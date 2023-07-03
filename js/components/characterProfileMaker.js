@@ -1,4 +1,4 @@
-import { CharacterDataObject } from '../hard data/characterData';
+import { CharacterDataObject } from '../hard data/characterData.js';
 
 /**
  * @param {CharacterDataObject} characterObject
