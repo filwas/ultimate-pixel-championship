@@ -1,7 +1,8 @@
 import { CharacterDataObject } from '/js/hard data/characterData.js';
-import { formElementMaker } from '../../../components/formMakerFunctions.js';
 import { bigButtonMaker } from '../../../components/buttonMaker.js';
 import { initWizard } from '../../wizard.js';
+import { formValidator } from './form-validation.js';
+import { formAssembly } from './booking-form.js';
 
 /**
  * Creates the booking-details-step.
@@ -17,22 +18,6 @@ export const bookingDetailsStep = (props) => {
    bookingDetailsStepWrapper.id = 'bookingDetailsStepWrapper';
    bookingDetailsStepWrapper.style.marginTop = '65px';
 
-   let form = document.createElement('form');
-
-   let charNameElement = formElementMaker({
-      blockName: 'CHOSEN FIGHTER',
-      blockType: 'charName',
-      characterObject: props.characterObject,
-   });
-   let userNameElement = formElementMaker({
-      blockName: 'COMMANDER',
-      blockType: 'userName',
-   });
-   let emailElement = formElementMaker({
-      blockName: 'EMAIL',
-      blockType: 'email',
-   });
-
    let bigOrangeButton = bigButtonMaker({
       text: 'Submit',
       background: '#DA8B14',
@@ -47,13 +32,7 @@ export const bookingDetailsStep = (props) => {
    });
    bigBackButton.style.marginTop = '16px';
 
-   form.style.display = 'grid';
-   form.style.height = '263px';
-   form.style.alignItems = 'end';
-
-   form.appendChild(charNameElement);
-   form.appendChild(userNameElement);
-   form.appendChild(emailElement);
+   let form = formAssembly(props);
 
    function wizardProceed(event) {
       let wizardWrapper = bookingDetailsStepWrapper.parentElement;
@@ -62,7 +41,7 @@ export const bookingDetailsStep = (props) => {
       let formData = null;
 
       if (event.target.textContent == 'Submit') {
-         if (!formValidator()) return;
+         if (!formValidator(form)) return;
          formData = new FormData(form);
       }
 
@@ -75,38 +54,6 @@ export const bookingDetailsStep = (props) => {
       );
 
       wizardWrapper.remove();
-   }
-
-   function formValidator() {
-      //This leviathan of an email-validating regexp function was shamelessly stolen from the Internet.
-      let emailRegex = new RegExp(
-         "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])",
-      );
-
-      let validationScore = 0;
-
-      form.querySelectorAll('input').forEach((input) => {
-         switch (input.name) {
-            case 'name':
-               if (input.value == '') invalidAction(input);
-               break;
-
-            case 'email':
-               if (!emailRegex.test(input.value)) invalidAction(input);
-               break;
-
-            default:
-               break;
-         }
-      });
-
-      function invalidAction(target) {
-         target.classList.add('errorInput');
-         target.nextElementSibling.classList.add('errorTextOn');
-         validationScore++;
-      }
-
-      return validationScore == 0 ? true : false;
    }
 
    bookingDetailsStepWrapper.append(form);
