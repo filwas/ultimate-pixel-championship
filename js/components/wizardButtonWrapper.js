@@ -12,22 +12,27 @@ export function wizardButtonWrapper(props) {
    let buttonWrapper = document.createElement('div');
    buttonWrapper.id = 'wizardButtonWrapper';
 
-   let orangeText = '';
+   let orangeProps = {
+      text: '',
+      background: '#DA8B14',
+      onClick: genericClick,
+   };
 
    switch (props.wizardStep) {
       case 0:
-         orangeText = 'Choose fighter!';
+         orangeProps.text = 'Choose fighter!';
          break;
 
       case 1:
          buttonWrapper.style.marginTop = '53px';
-         orangeText = 'Submit';
+         orangeProps.text = 'Submit';
+         orangeProps.onClick = submitClick;
 
          let backButton = bigButtonMaker({
             text: 'Back',
             background: '#2B1F1F',
             fontColor: '#FFFFFF',
-            onClick: buttonClick,
+            onClick: genericClick,
          });
          backButton.style.marginTop = '16px';
 
@@ -37,22 +42,18 @@ export function wizardButtonWrapper(props) {
          break;
 
       case 2:
-         orangeText = 'Submit another fighter';
+         orangeProps.text = 'Submit another fighter';
          break;
 
       default:
          break;
    }
 
-   let proceedButton = bigButtonMaker({
-      text: orangeText,
-      background: '#DA8B14',
-      onClick: buttonClick,
-   });
+   let proceedButton = bigButtonMaker(orangeProps);
 
    proceedButton.setAttribute('type', 'proceed');
 
-   function buttonClick(event) {
+   function genericClick(event) {
       let wizardWrapper = buttonWrapper.parentElement;
       let wizardScreenWrapper = wizardWrapper.parentElement;
 
@@ -63,6 +64,25 @@ export function wizardButtonWrapper(props) {
          initWizard({
             wizardStep: newWizardStep,
             characterObject: props.characterObject,
+            formData: null,
+         }),
+      );
+
+      wizardWrapper.remove();
+   }
+
+   function submitClick() {
+      let wizardWrapper = buttonWrapper.parentElement;
+      let wizardScreenWrapper = wizardWrapper.parentElement;
+      let form = wizardWrapper.childNodes[1].firstChild;
+
+      let formData = new FormData(form);
+
+      wizardScreenWrapper.append(
+         initWizard({
+            wizardStep: 2,
+            characterObject: props.characterObject,
+            formData: formData,
          }),
       );
 
