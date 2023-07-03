@@ -1,4 +1,4 @@
-import { barAdder } from '/js/components/barAdder.js';
+import { barAdder } from './js/components/barAdder.js';
 import { welcomeScreen } from './js/screens/welcome-screen.js';
 import { wizardScreen } from './js/screens/wizard-screen.js';
 
