@@ -16,7 +16,6 @@ export function formAssembly(props) {
       blockName: 'EMAIL',
       blockType: 'email',
    });
-
    form.style.display = 'grid';
    form.style.height = '263px';
    form.style.alignItems = 'end';
