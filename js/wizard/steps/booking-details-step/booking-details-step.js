@@ -1,4 +1,4 @@
-import { CharacterDataObject } from '/js/hard data/characterData.js';
+import { CharacterDataObject } from '../../../hard data/characterData.js';
 import { bigButtonMaker } from '../../../components/buttonMaker.js';
 import { initWizard } from '../../wizard.js';
 import { formValidator } from './form-validation.js';

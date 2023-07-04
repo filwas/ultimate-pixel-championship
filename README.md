@@ -4,6 +4,8 @@
 
 This project is a registering wizard for Ultimate Pixel Championship.
 
+To see it, please visit this address: https://filwas.github.io/ultimate-pixel-championship/
+
 ---
 ### Important note before you start ⚠️
 
