@@ -65,6 +65,7 @@ export const chooseFighterStep = (props) => {
          initWizard({
             wizardStep: 0,
             characterObject: characters[parseInt(characterIndex + increment)],
+            formData: null,
          }),
       );
 
