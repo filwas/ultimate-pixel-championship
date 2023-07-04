@@ -38,6 +38,9 @@ export const bookingConfirmationStep = (props) => {
 
    //I had to make displaying this message dependant on an if, because I'd get error
    //due to trying to call .get() on undefined.
+   //    If I have a variable that can be either `present` (object, basic type, etc.
+   //    but not a null) or an `undefined`, what can I do to mitigate the errors
+   //    occurring due to it being an undefined?
    if (props.formData)
       firstMessage.textContent = `Thank you for signing up, Commander ${props.formData.get(
          'name',
