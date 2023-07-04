@@ -3,7 +3,7 @@
  * * @param {HTMLDivElement} wrapper - Select the main wrapper.
  */
 export const barAdder = (wrapper) => {
-   let barAddress = '../../assets/bar.svg';
+   let barAddress = 'assets/bar.svg';
    let topBar = document.createElement('img');
    let botBar = document.createElement('img');
 
