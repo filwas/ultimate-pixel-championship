@@ -7,6 +7,7 @@ export const wizardScreen = () => {
    const wizard = initWizard({
       wizardStep: 0,
       characterObject: characters[0],
+      formData: null,
    });
    wizardScreenWrapper.append(wizard);
    return wizardScreenWrapper;
