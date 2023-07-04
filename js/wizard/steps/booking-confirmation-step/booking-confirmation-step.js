@@ -1,5 +1,6 @@
 import { bigButtonMaker } from '../../../components/buttonMaker.js';
 import { characters } from '../../../hard data/characterData.js';
+import { initWizard } from '../../wizard.js';
 
 /**
  * Creates the booking-confirmation-step.

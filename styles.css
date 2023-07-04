@@ -23,13 +23,13 @@ body {
 
 @font-face {
    font-family: Germania One;
-   src: url('node_modules/typeface-germania-one/files/germania-one-latin-400.woff') format('woff'),
-      url('node_modules/typeface-germania-one/files/germania-one-latin-400.woff2') format('woff2');
+   src: url('assets/typeface-germania-one/files/germania-one-latin-400.woff') format('woff'),
+      url('assets/typeface-germania-one/files/germania-one-latin-400.woff2') format('woff2');
 }
 @font-face {
    font-family: Roboto Mono;
-   src: url('node_modules/typeface-roboto-mono/files/roboto-mono-latin-400.woff') format('woff'),
-      url('node_modules/typeface-roboto-mono/files/roboto-mono-latin-400.woff2') format('woff2');
+   src: url('assets/typeface-roboto-mono/files/roboto-mono-latin-400.woff') format('woff'),
+      url('assets/typeface-roboto-mono/files/roboto-mono-latin-400.woff2') format('woff2');
 }
 
 
