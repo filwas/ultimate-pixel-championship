@@ -105,8 +105,8 @@ body {
 .inputStyle {
    width: 255px;
    height: 50px;
-   background: #31251E;
-   border: none;
+   background: #2B1F1F;
+   border: 2px #31251E;
    font-size: 18px;
    color: white;
    text-align: left;
