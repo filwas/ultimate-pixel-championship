@@ -8,6 +8,7 @@ export function progressMaker(props) {
    const progressWrapper = document.createElement('div');
    progressWrapper.id = 'progressWrapper';
    progressWrapper.classList.add('genericScreenStyle');
+   progressWrapper.classList.add('progressBarStyle');
    let topText = document.createElement('span');
    let progressBar = document.createElement('img');
 

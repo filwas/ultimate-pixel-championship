@@ -33,7 +33,7 @@ export const chooseFighterStep = (props) => {
    });
 
    let bigButton = bigButtonMaker({
-      text: 'Choose fighter!',
+      text: 'Choose',
       background: '#DA8B14',
       onClick: wizardProceed,
    });
@@ -42,11 +42,13 @@ export const chooseFighterStep = (props) => {
    characterShadow.src = 'assets/characterShadow.svg';
    characterName.textContent = props.characterObject.name;
 
-   characterImage.style.marginTop = '30px';
+   characterImage.style.marginTop = '100px';
    characterImage.style.zIndex = '2';
+   characterImage.style.minHeight = '166px';
    characterShadow.style.marginTop = '-10px';
    characterName.classList.add('bigText');
    characterName.style.fontSize = '30px';
+   bigButton.style.marginTop = '20px';
 
    chooseFighterStepWrapper.appendChild(characterImage);
    chooseFighterStepWrapper.appendChild(characterShadow);

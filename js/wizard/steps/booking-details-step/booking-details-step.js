@@ -16,7 +16,9 @@ export const bookingDetailsStep = (props) => {
    const bookingDetailsStepWrapper = document.createElement('div');
    bookingDetailsStepWrapper.classList.add('genericScreenStyle');
    bookingDetailsStepWrapper.id = 'bookingDetailsStepWrapper';
-   bookingDetailsStepWrapper.style.marginTop = '65px';
+   bookingDetailsStepWrapper.style.marginBottom = '120px';
+
+   let buttonsWrapper = document.createElement('div');
 
    let bigOrangeButton = bigButtonMaker({
       text: 'Submit',
@@ -31,6 +33,12 @@ export const bookingDetailsStep = (props) => {
       onClick: wizardProceed,
    });
    bigBackButton.style.marginTop = '16px';
+
+   buttonsWrapper.append(bigOrangeButton);
+   buttonsWrapper.append(bigBackButton);
+
+   buttonsWrapper.style.position = 'absolute';
+   buttonsWrapper.style.bottom = '50px';
 
    let form = formAssembly(props);
 
@@ -57,8 +65,7 @@ export const bookingDetailsStep = (props) => {
    }
 
    bookingDetailsStepWrapper.append(form);
-   bookingDetailsStepWrapper.append(bigOrangeButton);
-   bookingDetailsStepWrapper.append(bigBackButton);
+   bookingDetailsStepWrapper.append(buttonsWrapper);
 
    return bookingDetailsStepWrapper;
 };

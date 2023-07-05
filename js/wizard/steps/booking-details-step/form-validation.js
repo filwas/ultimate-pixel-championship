@@ -1,8 +1,5 @@
 export function formValidator(form) {
-   //This leviathan of an email-validating regexp function was shamelessly stolen from the Internet.
-   let emailRegex = new RegExp(
-      "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])",
-   );
+   let emailRegex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
 
    let validationScore = 0;
 

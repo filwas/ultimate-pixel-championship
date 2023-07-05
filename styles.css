@@ -62,10 +62,12 @@ body {
    text-align: center;
 }
 
+.progressBarStyle {
+   position: absolute;
+   top: 52px;
+}
+
 .characterProfile {
-   height: 200px;
-   width: 200px;
-   margin: 31px;
    display: grid;
    align-content: center;
    grid-template-columns: 1fr;
@@ -80,8 +82,11 @@ body {
 
 .allCharacterData {
    display: grid;
+   max-height:min-content;
    grid-template-columns: 1fr;
    grid-template-rows: repeat(2, 1fr);
+   grid-column-gap: 0px;
+   grid-row-gap: 0px;
    line-height: normal;
    align-items: end;
 }
@@ -92,6 +97,7 @@ body {
 }
 
 .formStyle {
+   top: 145px;
    display: grid;
    justify-items: start;
 }

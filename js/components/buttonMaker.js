@@ -20,7 +20,7 @@ export function buttonMaker(props) {
    button.style.height = props.height;
    button.style.fontSize = props.fontSize;
    button.style.color = props.fontColor;
-
+   button.style.border = 'none';
    button.textContent = props.text;
 
    button.addEventListener('click', props.onClick);
